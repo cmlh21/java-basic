@@ -1,0 +1,202 @@
+1. 1이상 ~ 100미만의 홀수를 출력하기
+
+   ```java
+   package homework07;
+   
+   public class Homework01 {
+   	public static void main(String[] args) {
+   		int a = 1;
+   
+   		while (a < 100) {
+   			System.out.println(a);
+   			a += 2;
+   		}
+   	}
+   }
+   ```
+
+
+
+2. 100 부터 1까지 거꾸로 출력 
+   100 99 98 ...
+
+   ```java
+   package homework07;
+   
+   public class Homework02 {
+   	public static void main(String[] args) {
+   		int a = 100;
+   
+   		while (a >= 1) {
+   			System.out.println(a);
+   			--a;
+   		}
+   	}
+   }
+   ```
+
+
+
+3. 구구단 5단 출력
+
+   ```java
+   package homework07;
+   
+   public class Homework03 {
+   	public static void main(String[] args) {
+   		int n1 = 5;
+   		int n2 = 1;
+   		while (n2 <= 10) {
+   			System.out.println(n1 + " * " + n2 + " = " + (n1 * n2));
+   			++n2;
+   		}
+   	}
+   }
+   ```
+
+   
+
+4. 30 + 31 + 32 + 33 + ... + 100 의 결과를 출력하세요. 4615가 나오면 정답.
+    int num = 30; // 31, 32, 33, 34, 35
+    int sum = 0;  // +=30 +=31 +=32 ....
+
+   ```java
+   package homework07;
+   
+   public class Homework04 {
+   	public static void main(String[] args) {
+   		// 30 + 31 + 32 + 33 + ... + 100 의 결과를 출력하세요.
+   		// 4615가 나오면 정답.
+   		int num = 30;
+   		int sum = 0;
+   
+   		while (num <= 100) {
+   			sum = num + sum;
+   			++num;
+   
+   		}
+   		System.out.println(sum);
+   	}
+   }
+   ```
+
+   
+
+5. 사용자가 -1을 입력할 때까지 정수를 무한히 입력 받고 
+
+   -1을 입력하면 입력 받은 정수들의 총합을 출력하세요.
+
+   ```java
+   package homework07;
+   
+   import java.util.Scanner;
+   
+   public class Homework05 {
+   	public static void main(String[] args) {
+   		Scanner sc = new Scanner(System.in);
+   
+   		System.out.println("정수를 입력하세요");
+   		int num = sc.nextInt();
+   		int sum = 0;
+   
+   		while (num != -1) {
+   			sum = sum + num;
+   			num = sc.nextInt();
+   		}
+   		System.out.println(sum);
+   	}
+   }
+   ```
+
+   
+
+6. Math.random()을 사용하여 구구단 문제를 랜덤하게 내고(2~9단), 
+   답을 입력 받아 "정답!" 혹은 "땡.."을 출력
+   정답이 5번 나올 때까지 반복
+
+   ```java
+   package homework07;
+   
+   import java.util.Scanner;
+   
+   public class Homework06 {
+   	public static void main(String[] args) {
+   		Scanner sc = new Scanner(System.in);
+   
+   		int a = 1;
+   
+   		while (a <= 5) {
+   			int n1 = (int) (Math.random() * 9) + 2;
+   			int n2 = (int) (Math.random() * 10) + 1;
+   
+   			System.out.print(n1 + " * " + n2 + " = ");
+   			int answer = sc.nextInt();
+   			System.out.println(n1 * n2 == answer ? "정답!" : "땡..");
+   			if (n1 * n2 == answer)
+   				++a;
+   
+   		}
+   	}
+   }
+   ```
+
+   
+
+7. Up & Down 게임 만들기
+
+      - 컴퓨터는 1 ~ 1000 중 임의의 정수 1개를 뽑습니다.
+   - 사용자는 컴퓨터가 뽑은 정수를 맞출 때까지 정수를 계속 입력 합니다.
+     정답 > 입력값 의 경우 : 'Up!' 출력
+     정답 < 입력값 의 경우 : 'Down!' 출력
+     - 시도횟수가 15회 미만이라면 "승리!"를, 그렇지 않으면 "패배.." 를 출력하세요.
+       (정답이 입력될 때까지 프로그램은 종료되지 않는 것으로 가정합니다.)
+
+   ```java
+   package homework07;
+   
+   import java.util.Scanner;
+   
+   public class Homework07 {
+   	public static void main(String[] args) {
+   		Scanner sc = new Scanner(System.in);
+   		int num = (int) ((Math.random() * 1000) + 1);
+   		int t = 0;
+   
+   		System.out.println("정수를 입력하세요");
+   		int user = sc.nextInt();
+   
+   		while (num != user) {
+   			System.out.println(num > user ? "Up!" : "Down!");
+   			user = sc.nextInt();
+   			++t;
+   		}
+   
+   		System.out.println(t < 15 ? "승리!" : "패배..");
+   	}
+   }
+   ```
+
+   
+
+8. 500 이하까지 피보나치 수열을 출력하라 (1부터 시작한 앞 두 수의 합이 다음 수)
+
+   ```java
+   package homework07;
+   
+   public class Homework08 {
+   	public static void main(String[] args) {
+   		int num1 = 1;
+   		int num2 = 2;
+   		
+   		while ( num2 <= 500) {
+   			System.out.println(num1);
+   			System.out.println(num2);
+   			num1 = num1 + num2;
+   			num2 = num2 + num1;
+   		}
+   		System.out.println(num1);
+   	}
+   }
+   ```
+
+   
